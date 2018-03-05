@@ -1,11 +1,10 @@
 ---
 layout: post
-title: Flake it till you make it
-subtitle: Excerpt from Soulshaping by Jeff Brown
+title: SSH Setup from Scratch
 bigimg: /img/path.jpg
-tags: [books, test]
+tags: [linux, ssh]
 ---
-### 建立alias快捷符号
+* Build aliases for first Access
 
 ```
 vim ~/.bash_aliases
@@ -14,10 +13,13 @@ alias yida = 'ssh yida@ip'
 
 source ~/.bash_aliases
 ```
-### ssh 无密码登录
+* Set SSH without password
 
 ```
 ssh-keygen
 ssh-copy-id -i ~/.ssh/id_rsa.pub yida@ip
+```
+* SSH
+```
 yida
 ```
