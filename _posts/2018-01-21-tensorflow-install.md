@@ -29,9 +29,13 @@ conda install jupyter
 # As conda ask you manually build a kernel now
 python -m ipykernel install --user --name luba --display-name "Python luba"
 ```
-* Other Python Package
+* Other Python Packages
 
 ```
 conda install scikit-learn
 conda install -c conda-forge matplotlib
+conda install -c conda-forge cycler 
+conda install -c anaconda seaborn 
+
+
 ```
