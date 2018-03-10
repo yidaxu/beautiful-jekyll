@@ -32,9 +32,23 @@ In other words, Kalman filter.
  observation_current ~ Distribution(fn3(state_previous)) （测量方程）
 ```
 ### Variational Learning 
-* Inference Network or Recognition Network:
+#### Inference Network or Recognition Network:
  * Just a neutral netork which approximates the intractable posterior
- 
+#### 用来模拟后验概率的函数的形式，是一个正态分布家族，其均值和方差由神经网络提供。
+* 我们要通过q(z) = Gaussion(z) 来模拟posterior p(z|x) 在观测数据已知的情况下，隐藏状态出现的概率
+* q(z)是一个正态分布，均值是由一个神经网路的输出决定的，方差是另一个神经网络的输出，而这连个神经网络的输入则是观测到的数据x
+* 因此q(z)和观测数据，两个神经网络的参数相关
+#### 如何优化神经网络的参数，从而逼近？
+* 两个概率越近，则KL divergence越低。
+* 但是因为不知道后验概率因此不可以求。
+* 转换成求ELBO， 因为ELBO是期望，可以通过采样的方法来观测均值，因此是可以求得。
+* 因此优化ELBO，就相当于使两个概率分布越来越近。
+
+#### 结构特征
+* 神经网络的输入时什么那？
+* 根据 Deep Kalman Model的模型
+      我们可以推出后验概率密度的结构特征
+      p(所有状态|所有观察）= p(第一个个状态|所有观察) * p(第二状态|第一个状态， 第二个观察开始的所有观察) * 。。。 * p(最后一个状态|最后第二状态，最后一个观察)
 ### Nottion 
-$$\theta$$ denote the parameter of generative model.
-$\phi$ denote the parameter of inference network.
+Theta denote the parameter of generative model.
+Pi denote the parameter of inference network.
