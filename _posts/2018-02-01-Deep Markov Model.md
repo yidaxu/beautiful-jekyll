@@ -36,5 +36,5 @@ In other words, Kalman filter.
  * Just a neutral netork which approximates the intractable posterior
  
 ### Nottion 
-$\theta$ denote the parameter of generative model.
+$$\theta$$ denote the parameter of generative model.
 $\phi$ denote the parameter of inference network.
