@@ -67,19 +67,20 @@ In other words, Kalman filter.
      * 利用Stochastic Backpropogation 来进行优化Inference Model
      * 期望部分用抽样，KL部分有解析解
      
- * 整体算法
-    * 输入：
-        * 数据库
-        * Inference Model (神经网络的结构)
-        * Generative Model (kalman filter 的结构)
-    * 算法：重复以下过程，直到收敛
-        * 选取一个数据点（第一个观察，第二个观察，。。。。。。，第n个观察）
-        * 求估计的后验概率密度q的参数， 也就是所把观察，和前一时刻的状态送进神经网络。
-        * 得到了估计的后延概率分布，我们队其进行抽样，得到一个潜在状态（第一个状态，第二个状态，。。。。，第n个状态）
-        * 根据生成模型，我们可以计算出一个只和观察相关的概率 和 KL
-        * 把x带入概率和KL，我们可以计算出目标函数 (只和 相关参数相关)
-        * 求解 Drevatrive
-        * 利用 Adam进行更新。
+ #### 整体算法
+ 
+* 输入：
+   * 数据库
+   * Inference Model (神经网络的结构）
+   * Generative Model (kalman filter 的结构)
+* 算法：重复以下过程，直到收敛
+   * 选取一个数据点（第一个观察，第二个观察，。。。。。。，第n个观察）
+   * 求估计的后验概率密度q的参数， 也就是所把观察，和前一时刻的状态送进神经网络。
+   * 得到了估计的后延概率分布，我们队其进行抽样，得到一个潜在状态（第一个状态，第二个状态，。。。。，第n个状态）
+   * 根据生成模型，我们可以计算出一个只和观察相关的概率 和 KL
+   * 把x带入概率和KL，我们可以计算出目标函数 (只和 相关参数相关)
+   * 求解 Drevatrive
+   * 利用 Adam进行更新。
  
 ### Nottion 
 Theta denote the parameter of generative model.
