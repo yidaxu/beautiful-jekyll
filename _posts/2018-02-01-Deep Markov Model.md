@@ -26,8 +26,15 @@ Transition Distribution is replaced by a multi-layer perceptrons(MLPS)
 ## Background
 ### Gaussian State Space Models (GSSM)
 In other words, Kalman filter.
-* Transition (转移模型)
+* Transition (转移模型 / 状态方程)  and Emission (传播模型 / 测量方程)
 ```python
- state_current ~ N (fn(state_previous), fn2(state_previous))
- observation_current ~ Distribution(fn3(state_previous))
+ state_current ~ N (fn(state_previous), fn2(state_previous)) (状态方程)
+ observation_current ~ Distribution(fn3(state_previous)) （测量方程）
 ```
+### Variational Learning 
+* Inference Network or Recognition Network:
+ * Just a neutral netork which approximates the intractable posterior
+ 
+### Nottion 
+$\theta$ denote the parameter of generative model.
+$\phi$ denote the parameter of inference network.
