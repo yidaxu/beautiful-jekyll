@@ -82,6 +82,16 @@ In other words, Kalman filter.
    * 求解 Drevatrive
    * 利用 Adam进行更新。
  
+### Structured Inference Network
+根据Inference Network的结构不同，我们将其定义成如下网络
+* Mean Field Approximations
+  * 神经网络的输入只是数据，而没有上一个状态。
+  * 又分为 MF-LR 和 MF-L 指的是是否利用的反向信息
+  
+* Structured Inference Networks
+ * 指的是神经网络的数据，有上一状态
+ * 根据利用什么样的信息，分为ST-L, DKS, ST-LR
+ * DKS就是ST-R 只用了反向信息。
 ### Nottion 
 Theta denote the parameter of generative model.
 Pi denote the parameter of inference network.
