@@ -21,3 +21,13 @@ Transition Distribution is replaced by a multi-layer perceptrons(MLPS)
 ### Experiment 
 * Ask question: what would have happended to patients had they not received treatement.
 * Identifies the way certain medications affect a patient's health.
+
+
+## Background
+### Gaussian State Space Models (GSSM)
+In other words, Kalman filter.
+* Transition (转移模型)
+```python
+ state_current ~ N (fn(state_previous), fn2(state_previous))
+ observation_current ~ Distribution(fn3(state_previous))
+```
