@@ -15,10 +15,9 @@ Gan 说白了就是有两个网络，一个是Generator G 一个是discriminator
 </tr>
 </div>  
 
-### Tensorflow 基础知识
 <table width="100%">
 <tr>
-<td colspan="2">两种定义变量的方法</td>
+<td >两种定义变量的方法</td>
 </tr>
 <tr>
 <td>tf.Variable()</td>
@@ -31,7 +30,7 @@ Gan 说白了就是有两个网络，一个是Generator G 一个是discriminator
 <tr>
 <td>tf.name_scope()对其影响</td>
 <td>tf.name_scope()对其没有影响</td>
-  </tr>
+</tr>
   
 ### 重复利用变量
 如达到想要重复利用变量的效果（也就是说一个变量出现在两个网络，这两个网络对这个变量都有影响），需要配合使用tf.get_variable()和tf.variable_scope()来提取变量。
@@ -110,4 +109,3 @@ d_vars = [var for var in t_vars if var.name.startswith('discriminator')]
 d_train_opt = tf.train.AdamOptimizer(learning_rate).minimize(d_loss, var_list=d_vars)
 g_train_opt = tf.train.AdamOptimizer(learning_rate).minimize(g_loss, var_list=g_vars)
 ```
-你好
