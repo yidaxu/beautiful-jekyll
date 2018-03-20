@@ -184,6 +184,11 @@ DKF model
   ```
   
 * 这是_createInferenceParams函数的解析求解
+DIM_INPUT: DIM_OBSERVATION
+RNN_SIXE = rnn_size
+DIM_HIDDEN = RNN_SIZE
+DIM_STOC = DIM_STOCHASTIC
+第一层： dim_input
 
 </td>
 </tr>
