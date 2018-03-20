@@ -121,7 +121,25 @@ datasets['data_type']        = 'binary'
 </tr>
 
 
-
+<tr>
+<td>
+DKF model
+初始化
+  * 第一步要做的就是建立Parameters
+  ```python
+  npWeights: OrderedDict()  # A dictionary that remember the order it added
+  self._createInferenceParams(npWeights)
+  self._createGenerativeParams(npWeights)
+  return npWeights
+  ```
+  * createInferenceParams 详细求解
+  ```python
+  DIM_HIDDEN:100
+  DIM_STOCHASTIC: 200
+  ```
+  
+</td>
+</tr>
 
 
 
