@@ -119,25 +119,54 @@ datasets['data_type']        = 'binary'
 ```
 </td>
 </tr>
-
-
 <tr>
 <td>
 DKF model
 初始化
-  * 第一步要做的就是建立Parameters
-  ```python
+
+* 第一步要做的就是建立Parameters
+ 
+ ```python
   npWeights: OrderedDict()  # A dictionary that remember the order it added
   self._createInferenceParams(npWeights)
   self._createGenerativeParams(npWeights)
   return npWeights
   ```
-  * createInferenceParams 详细求解
-  ```python
-  DIM_HIDDEN:100
-  DIM_STOCHASTIC: 200
-  ```
+* createInferenceParams 详细求解
+
+  这是 Transaction的程序解析，DIM_STOCHASTIC 就是z的维度
+
+```python
   
+  DIM_HIDDEN:200
+  DIM_STOCHASTIC: 100
+  
+  如果 Transaction_type 是 mlp的话：
+  DIM_HIDDEN_TRANS =  2 * 200
+  Transition_layers:2
+  0 层 input: dim_stachastic output: DIM_HIDDEN_TRANS
+  1 层 input: DiM_HIDDEN_TRANS, DIM_HIDDEN_TRANS // getWeight return np array
+  MU_COV_INP = DIM_HIDDEN_TRANS
+  
+  如果 Transaction_type 是 simple_gated
+  g_gate: DIM_STOCHASTIC, DIM_HIDDEN_TRANS
+  h_gate: DIM_STOCHASTIC, DIM-HIDDEN_TRANS
+  g_gate1: DIM_HIDDEN_TRANS, DIM_STOCHASTIC
+  h_gate1: DIM_HIDDEN_TRANS, DIM_STOCHASTIC
+  MU_COV_INP = DIM_STOCHASTIC
+  
+  如果 Transaction_type 是 simple_gated
+  MU/COV
+  weight: DIM_STOVHSTIC, DIM_STOCHASTIC 
+  bias:DIM_STOCHASTIC
+  
+  # 如果 Transaction_type 是 mlp
+  weight: DIM_HIDDEN_TRANS, STochastic
+  bias:DIM Stochastic 
+``` 
+
+
+  这是 Emission 的程序解析，DIM_STOCHASTIC 就是z的维度
 </td>
 </tr>
 
