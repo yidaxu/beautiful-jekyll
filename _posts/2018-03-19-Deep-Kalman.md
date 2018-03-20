@@ -86,6 +86,42 @@ _polyphonic(dataset)
 ```
 </td>
 </tr>
+<tr>
+<td>
+  
 在_polyphonic(dset)之中
 首先调用 process._processPolyphonic(dset)
-_
+如果有数据库，那么什么都不做。如果没有数据库，那么进行产生数据库的准备
+
+最后产生的数据：
+数据是这样的
+* 首先是由一个个样本构成的，每一个样本是一个sequence。
+* 一个样本是由不同个时间点数据构成的。
+* 一个时间点的数据是一组88维的向量， 每个位置取0或1代表是否有该键
+
+* Mask：Number_Sequence, MAX_LENGTH （当某个样本（Sequence）,的某个时间点（T) 有数据时为1）
+* Compileddata : Number_Sequence, MAX_LENGTH, DIM (当某个样本，的某个时间点的，某一个键有值时为1)
+* 如果数据是sorted version的话，值的是根据时间点有值的多少，也就是Sequence的长度来搞事情的。
+
+最终dataset的结果如下：
+```python
+datasets = {}
+datasets['train']            = ff['train'].value
+datasets['test']             = ff['test'].value
+datasets['valid']            = ff['valid'].value
+datasets['mask_train']       = ff['mask_train'].value
+datasets['mask_test']        = ff['mask_test'].value
+datasets['mask_valid']       = ff['mask_valid'].value
+datasets['dim_observations'] = datasets['train'].shape[2]
+datasets['dim_actions']      = 0
+datasets['hasMasks']         = True
+datasets['data_type']        = 'binary'
+```
+</td>
+</tr>
+
+
+
+
+
+
