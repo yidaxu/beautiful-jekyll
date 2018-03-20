@@ -167,6 +167,24 @@ DKF model
 
 
   这是 Emission 的程序解析，DIM_STOCHASTIC 就是z的维度
+  
+  ```python
+  
+  如果 emission_type 是 mlp:
+  假设 emission_type = 2
+  第0层 : Dim_Stochastic, DIM_HIDDEN
+  第1层 : DIM_HIDDEN. DIM_HIDDEN
+  
+  如果 emission_type 是 conditional
+  第0层： Dimstochastic + Dim observations, DIM_HIdden
+  第1层： Dim_Hidden, Dim_Hidden
+  
+  如果 data_type 是binary
+  Emission: Dim_hidden, dim_observations
+  ```
+  
+* 这是_createInferenceParams函数的解析求解
+
 </td>
 </tr>
 
