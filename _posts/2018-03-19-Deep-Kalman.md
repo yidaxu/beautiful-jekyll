@@ -182,16 +182,60 @@ DKF model
   如果 data_type 是binary
   Emission: Dim_hidden, dim_observations
   ```
-  
+</td>
+</tr>
+
+<td>
+<tr>
 * 这是_createInferenceParams函数的解析求解
+  
+  第一层
+
+```python
+  
 DIM_INPUT: DIM_OBSERVATION
 RNN_SIXE = rnn_size
 DIM_HIDDEN = RNN_SIZE
 DIM_STOC = DIM_STOCHASTIC
-第一层： dim_input
+第一层： dim_input: Dim_Observations
+RNN_SIZE: rnn_size
+DIM_HIDDEN:rnn_size
+DIM_STOC: Dim_STOCHASTIc
+由 Observation 到RNN的全连网络： dim_input, dim_output
+````
 
-</td>
+第二层创建LSTM
+
+```python
+
+_createLSTMWeights
+第一步判断LR
+RNN_SIZE
+for suffix in suffices
+  for l in range //多少层
+      W_lstm: RNN_SIZE, RNN_SIZE * 4
+```
+
+第三层
+
+```python
+如果是mean_field则不管
+如果是 structured
+DIM_INPUT = dim_Stocastics
+如果有用到 generative_prior
+Dim_INPUT = rnn_size
+q_W_St_0 DIM_INPUT, rnn_size
+
+```
+第四层
+
+```python
+q_W_mu: RNN_SIZE, DIM_STOCHASTIC
+q_W_cov: RNN_SIZE, DIM_STOCHASTIC
+if var_model == LR
+q_W+mu_r = self._getWeight((RNN_SIZE, dim_stochastic))
+```
+
 </tr>
-
-
+</td>
 
