@@ -239,3 +239,29 @@ q_W+mu_r = self._getWeight((RNN_SIZE, dim_stochastic))
 </tr>
 </td>
 
+<tr>
+<td>
+  利用_makeTheanoShared函数转变tWeights
+  
+</tr>
+</td>
+
+</tr>
+</td>
+
+<tr>
+<td>
+  利用buildModel函数来建立model
+  * inferenceAndReconstruction
+  * qEmbeddingLayer: Input(X:observation datat) OutPut:RNN_SIZE
+  * 然后构建LSTM layer
+      l2r _LSTMlayer
+      r2l 
+      hidden_state [T  x bsx dim]
+  * inferenceLayer:
+  Input: hidden_state
+  Output: z[bs * T * dim], mu [bs * T * dim], cov [bs * T * dim]
+  
+  
+</tr>
+</td>
