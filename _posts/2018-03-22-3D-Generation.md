@@ -39,7 +39,9 @@ Gan 说白了就是有两个网络，一个是Generator G 一个是discriminator
   
  ### gan的套路
  * 定义generator
+ 
  ```Python
+ 
  def generator(z, out_dim, n_units=128, reuse=False, alpha=0.01):
     #确保 所有的变量以generator开头
     with tf.variable_scope('generator', reuse=reuse):
@@ -53,7 +55,8 @@ Gan 说白了就是有两个网络，一个是Generator G 一个是discriminator
         out = tf.tanh(logits) 
         return out
  ```
-* 定义discriminator 
+* 定义discriminator
+
 ```Python
 
 def discriminator(x, n_units=128, reuse=False, alpha=0.01):
@@ -69,7 +72,9 @@ def discriminator(x, n_units=128, reuse=False, alpha=0.01):
         return out, logits
 ```
 * 建立模型
+
 ```python
+
 #清楚以前的图，避免图的堆积
 tf.reset_default_graph()
 # Create our input placeholders
@@ -85,6 +90,7 @@ d_model_real, d_logits_real = discriminator(input_real, n_units=d_hidden_size, a
 d_model_fake, d_logits_fake = discriminator(g_model, reuse=True, n_units=d_hidden_size, alpha=alpha)
 ```
 * 计算损失和建立优化器。
+
 ```python
 
 # Calculate losses
