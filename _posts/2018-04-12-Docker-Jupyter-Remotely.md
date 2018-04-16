@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Basic Linux Command
+title: Docker Basic Command and Docker + Jupyter + Remotely.
 bigimg: /img/path.jpg
 tags: [linux, docker, tensorflow, jupyter]
 ---
