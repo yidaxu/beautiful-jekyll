@@ -1,0 +1,25 @@
+---
+layout: post
+title: How to delete a port bind
+bigimg: /img/path.jpg
+tags: [linux, docker,port, jupyter]
+---
+```python
+netstat -tpln | grep ssh
+kill <proc_number>
+```
+
+* t: TCP
+* p: show process
+* l: listening
+* n: numeric values
+
+```python
+(header added, tested on Debian wheezy)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:1443          0.0.0.0:*               LISTEN      4036/ssh        
+```
+
+Reference 
+* https://superuser.com/questions/248389/list-open-ssh-tunnels
+* https://www.freebsd.org/cgi/man.cgi?query=ssh&sektion=1
