@@ -11,23 +11,30 @@ tags: [linux, docker, tensorflow, jupyter]
 docker pull _image_name_
 # List all images
 docker images
-List All Containers
+# List All Containers
 docker ps -a
-Stand Up a Docker Container (Running in the Background)
+# Stand Up a Docker Container (Running in the Background)
 docker run -it -d _image_name_
-Log Into a Running Docker Container
+# Log Into a Running Docker Container
 docker exec -it _container_id_ bash
-Remove A Single Docker Image
+# Remove A Single Docker Image
 docker rmi _image_name_
-Remove All Docker Images
+# Remove All Docker Images
 docker rmi $(docker images -q)
-Stop All Docker Containers
+# Stop All Docker Containers
 docker stop $(docker ps -a -q)
-Delete All Docker Containers
+# Delete All Docker Containers
 docker rm $(docker ps -a -q)
-Commit Docker Container to an Image
+# Commit Docker Container to an Image
 docker commit _container_id_ _image_name_
-
+# Push Image to Remote Registry
+docker push _image_name_
+# Copy a File From Host Into a Container
+docker cp _file_ _container_id_:/
+# Login
+docker login
+# Logout
+docker logout
 ```
 
 
