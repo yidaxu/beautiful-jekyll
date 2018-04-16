@@ -35,7 +35,10 @@ docker cp _file_ _container_id_:/
 docker login
 # Logout
 docker logout
+# Get ip address of container
+docker inspect _container_id_ | egrep '"IPAddress":[^,]+'
 ```
+Reference:https://askmacgyver.com/blog/tutorials/useful-docker-commands
 
 
 
