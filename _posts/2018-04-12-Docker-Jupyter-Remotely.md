@@ -23,6 +23,25 @@ su - ${USER}
 id -nG
 ```
 reference:https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
+
+### 新来的image建立docker需要做如下事情
+```python
+apt-get install
+apt-get install openssh-server
+python -m pip install --upgrade pip
+python -m pip install jupyter
+```
+
+### docker 最近用的比较多的命令
+```python
+nvidia-docker run -it -p 8888:8888 yidaxu/dss
+docker exec -it containid bash
+docker commit containid yidaxu/dss
+jupyter notebook --ip=0.0.0.0 --allow-root
+from PIL import Image
+```
+
+
 ### docker 常用命令
 
 ```Python 
