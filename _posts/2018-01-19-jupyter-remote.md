@@ -18,6 +18,10 @@ remote_user@remote_host$ ipython notebook --no-browser --port=8889
 local_user@local_host$ ssh -N -f -L localhost:8888:localhost:8889 remote_user@remote_host
 
 localhost:8888
+
+jupyter notebook --ip=0.0.0.0 --allow-root
+
+nvidia-docker run -it -p 8888:8888 -v $(pwd):/opt/caffe/examples/DSS yidaxu/dss
 ```
 
 https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh
