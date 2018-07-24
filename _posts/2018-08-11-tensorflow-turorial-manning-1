@@ -1,0 +1,21 @@
+特征 feature: 描述一个物体的相量。
+In tensorflow, 利用矩阵来表示数据， 一行是一个element.
+
+Tensor
+1. 是矩阵的扩展
+2. 可以利用index来查找圆锁
+
+常用的数据类型
+* list
+* numpy array
+* constant tensor object
+
+Tensorflow 在处理数据的时候都是在tensor object上执行的， 但是我们不用担心这一点，因为tensorflow会默认的调用 tf.convert_to_tensor()
+把不是tensor的object转换成tensor object.
+
+Tensor的表示
+* 以 aptly name Tensor 开头
+* 有一个唯一的表示：name
+* 一个dimension（shape）来定义结构
+* 一个数据类型（dtype）来定义存储类型
+* 如果不给名字，library会自动命名 Const:0, Const_1:0, Const_2:0
