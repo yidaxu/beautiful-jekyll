@@ -88,13 +88,75 @@ computer crashes during training you can continue from the last checkpoint rathe
     * else TensorBoard will merge stats from different runs, which will mess up the visualizations.
     * The simplest solution for this is to include a timestamp in the log dierctory name. Add the following code 
       at the beginning of the program:
-      
+ ```     
       from datetime import datetime
       now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
       root_logdir = "tf_logs"
       logdir = "{}/run-{}/".format(root_logdir, now)
-      
-    Next, add the following code at the very end of the construction phases:
-    
+ ```     
+ Next, add the following code at the very end of the construction phases:
+ 
+    ```python
     mse_summary = tf.summary.scalar('MSE', mse)
-    file_writer = tf.summary.File
+    file_writer = tf.summary.FileWriter(logdir, tf.get_default_graph())
+    ```
+    
+ * The first line creates a node in the graph that will evaluate the MSE value and write it to a TensorBoard-compatible
+ binary log string called a summary. 
+ * The second line creates a FileWriter that you will use to write summaries to logfiles in the log directory.
+    * the first parameter indicates the path of the log directory (relative to the current directory)
+    * the second (optional) parameter is the graph you want to visualize.
+ * Upon creation
+    * the FileWrite creates the log directory if it does not already exist( and its parent directory if neeeded)
+    * writes the graph definition in a binary logfile called an events file.
+
+
+#### Next you need to update the execution phase
+  * to evaluate the mse_summary node regularly during training (e.g. every 10 mini-batches)
+  * This will output a summary that you can then write to the events file using the file_write.
+```python
+[...]
+    for batch_index in range(n_batches):
+        X_batch, y_batch = fetch_batch(epoch, batch_index, batch_size)
+        if batch_index % 10 == 0:
+            summary_str = mse_summary.eval(feed_dict={X: X_batch, y: y_batch})
+            step = epoch * n_batches + batch_index
+            file_writer.add_summary(summary_str, step)
+        sess.run(training_op, feed_dict={X: X_batch, y: y_batch})
+    [...]
+
+```
+* Avoid logging training stats at every single training step, as this would significantly slow down training.
+* Finally, you want to close the FileWriter at the end of the program
+```python
+file_writer.close()
+```
+
+#### After you run
+```bash
+ls -l tf_logs/run* 
+```
+to list the contents of the log directory.
+
+#### It's time to fire up the TensorBoard server.
+
+Start the server by 
+* running the tensorboard command
+* pointing it to the root log directory
+* This starts the TensorBoard web server, listening on port 6006 (which is "goog" written upside down)
+
+```python
+$ source env/bin/activate
+$ tensorboard --logdir tf_logs/
+Starting TensorBoard  on port 6006
+(You can navigate to http://0.0.0.0:6006)
+```
+
+#### Tensorboard
+* In the Events tab you should see MSE on the right.
+* Click on the Graphs tab. You should see the graph.
+
+#### Tip
+
+If you want to take a peak at the graph directly within Jupyter, you can use the show_graph() function available in 
+the notebook for this chapter. 
