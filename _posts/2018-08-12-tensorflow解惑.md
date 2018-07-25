@@ -7,7 +7,7 @@ As of TensorFlow 1.0 (February 2017) there's also the high-level tf.layers.batch
 
 It's super simple to use:
 
-# Set this to True for training and False for testing
+Set this to True for training and False for testing
 training = tf.placeholder(tf.bool)
 
 x = tf.layers.dense(input_x, units=100)
@@ -24,3 +24,15 @@ with tf.control_dependencies(extra_update_ops):
     train_op = optimizer.minimize(loss)
 ...
 sess.run([train_op], ...)
+
+
+
+
+
+#### global step 
+
+global_step refers to the number of batches seen by the graph. Every time a batch is provided, the weights are uploaded in the dierction that minimizes the loss. 
+
+global_step just keeps track of the number of batches seen so for.
+
+When it is passed to the minimize() argument list, the variable is increased by one.
