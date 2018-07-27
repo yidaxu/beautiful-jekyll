@@ -53,9 +53,22 @@ Git diff
  #### Mreging files
  * git branch
  * git merge 
-    * merge
- * git show 和之前的parent的不同之处
+    * merge 当前branch + 加参数 into 当前branch
+    * 参数的顺序不重要，重要的是要在当前对了
+    * git branch2 into branch1
+    ```python
+    git checkout branch1
+    git merge branch2
+    等于 git merge branch2 branch1
+    ```
+ * git show commit-id 和之前的parent的不同之处
  * git branch -d coins 删除 branch
  * git merge merge coins into master
  * delete branch delete label.
+ 
+ 
+ #### Merging files
+ * conflict 相同区域同时修改 
+
+ 
  
